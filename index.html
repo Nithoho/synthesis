@@ -25,26 +25,49 @@
     <h1>Audio Listening Site</h1>
     <p>Click on the titles below to listen to the audio files.</p>
 
-    <h2>Audio Track 1</h2>
-    <audio controls>
-      <source src="audio/low_E_string_guitar_48.wav" type="audio/wav" />
-      Your browser does not support the audio element.
-    </audio>
-
-    <h2>Audio Track 2</h2>
-    <audio controls>
-      <source src="audio/example2.wav" type="audio/wav" />
-      Your browser does not support the audio element.
-    </audio>
-
-    <h2>Audio Track 3</h2>
-    <audio controls>
-      <source src="audio/example3.wav" type="audio/wav" />
-      Your browser does not support the audio element.
-    </audio>
+    <div id="audio-list"></div>
 
     <footer>
       <p>&copy; 2024 Nick Thomas</p>
     </footer>
+
+    <script>
+      const audioFiles = [
+        "JoinedOriginal.wav",
+        "OriginalStringA.wav",
+        "OriginalStringB.wav",
+        "OriginalStringD.wav",
+        "OriginalStringG.wav",
+        "Orignal.wav",
+        "BestModel.wav",
+        "BestModelStringA.wav",
+        "BestModelStringB.wav",
+        "BestModelStringD.wav",
+        "BestModelStringG.wav",
+        "25PercentData.wav",
+        "50PercentData.wav",
+        "75PercentData.wav",
+        "5Frequencies.wav",
+        "10Frequencies.wav",
+        "15Frequencies.wav",
+      ];
+
+      const audioListContainer = document.getElementById("audio-list");
+
+      audioFiles.forEach((fileName) => {
+        const title = document.createElement("h2");
+        title.textContent = fileName.replace(".wav", "");
+
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        const source = document.createElement("source");
+        source.src = `audio/${fileName}`;
+        source.type = "audio/wav";
+        audio.appendChild(source);
+
+        audioListContainer.appendChild(title);
+        audioListContainer.appendChild(audio);
+      });
+    </script>
   </body>
 </html>
